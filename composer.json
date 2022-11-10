@@ -1,0 +1,7 @@
+{
+    "name": "kchua/phptest",
+    "require": {
+        "monolog/monolog": "^2.8",
+        "newrelic/monolog-enricher": "^2.0"
+    }
+}
