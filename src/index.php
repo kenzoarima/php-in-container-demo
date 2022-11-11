@@ -1,12 +1,23 @@
 <?php
 require_once "../vendor/autoload.php";
-use Monolog\Handler\BufferHandler;
+// use Monolog\Handler\BufferHandler;
+// use Monolog\Logger;
+// use NewRelic\Monolog\Enricher\{Handler, Processor};
+
+// $log = new Logger('log');
+// $log->pushProcessor(new Processor);
+// $log->pushHandler(new BufferHandler(new Handler));
+
+use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
-use NewRelic\Monolog\Enricher\{Handler, Processor};
+use NewRelic\Monolog\Enricher\{Formatter, Processor};
 
 $log = new Logger('log');
 $log->pushProcessor(new Processor);
-$log->pushHandler(new BufferHandler(new Handler));
+
+$handler = new StreamHandler('php://stderr');
+$handler->setFormatter(new Formatter);
+$log->pushHandler($handler);
 ?>
 <html>
 <h1>hello world</h1>
